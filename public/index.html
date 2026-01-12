@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Lista de Feira Família</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login-screen">
+        <div class="card">
+            <h2 style="text-align: center;">Acesso</h2>
+            <input type="text" id="username" placeholder="Usuário">
+            <input type="password" id="password" placeholder="Senha">
+            <button onclick="handleLogin()">Entrar</button>
+            <p id="login-error" class="error-msg">Dados incorretos!</p>
+        </div>
+    </div>
+
+    <div id="dashboard-screen" class="hidden">
+        <nav><h1>Lista de Feira - Família</h1></nav>
+        <div class="container">
+            <div class="grid-users" id="user-list"></div>
+            <button onclick="logout()" class="btn-logout">Sair do Sistema</button>
+        </div>
+    </div>
+
+    <div id="list-screen" class="hidden">
+        <nav><h1 id="current-user-title">Lista</h1></nav>
+        <div class="full-screen-card">
+            <div class="input-section">
+                <div class="input-group">
+                    <input type="hidden" id="edit-index">
+                    <input type="text" id="item-name" placeholder="Item / Pesquisar" oninput="renderTable()">
+                    <input type="number" id="item-qty" placeholder="Qtd">
+                    <input type="number" id="item-price" placeholder="R$ Unit" step="0.01">
+                </div>
+                <div class="button-group">
+                    <button onclick="showDashboard()" class="btn-back">Voltar</button>
+                    <button onclick="clearFullList()" class="btn-clear-all">Limpar</button>
+                    <button onclick="shareWhatsApp()" class="btn-share">WhatsApp</button>
+                    <button id="add-btn" onclick="addItem()" class="btn-save">Salvar</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="total-section">TOTAL: R$ <span id="grand-total">0.00</span></div>
+            <table id="items-table">
+                <thead>
+                    <tr><th>Item</th><th>Qtd</th><th>Unit</th><th>Total</th><th>Ações</th></tr>
+                </thead>
+                <tbody id="table-body"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
