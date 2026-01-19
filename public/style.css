@@ -23,4 +23,21 @@ th { background: #f8f9fa; }
 #login-screen { display: flex; align-items: center; justify-content: center; height: 100vh; background: var(--dark); }
 #login-screen .card { background: white; padding: 30px; border-radius: 8px; width: 280px; }
 .error-msg { color: var(--danger); text-align: center; display: none; margin-top: 10px; }
-@media (max-width: 600px) { .input-group { gap: 4px; } .input-group input { padding: 10px 4px; font-size: 13px; } th, td { font-size: 11px; } } 
+@media (max-width: 600px) { .input-group { gap: 4px; } .input-group input { padding: 10px 4px; font-size: 13px; } th, td { font-size: 11px; } } .budget-section {
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border-left: 5px solid var(--primary);
+}
+.budget-summary {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 5px;
+}
+.balance-negative {
+    color: var(--danger);
+}
+.balance-positive {
+    color: var(--primary);
+}

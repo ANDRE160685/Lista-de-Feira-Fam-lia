@@ -1,6 +1,6 @@
-const validUser = "familiar";
+const validUser = "Familiar";
 const validPass = "123";
-const users = ["André", "Karla", "Marileide", "Robson", "Sabrina", "Lili", "Ranulfo", "Aline"];
+const users = ["Familiar"];
 
 let db = JSON.parse(localStorage.getItem('feiraDB')) || {};
 users.forEach(u => { if (!db[u]) db[u] = []; });
@@ -64,6 +64,9 @@ function addItem() {
 function renderTable() {
     const tbody = document.getElementById('table-body');
     const searchTerm = document.getElementById('item-name').value.toLowerCase();
+    const budgetInput = document.getElementById('budget-value').value;
+    const balanceSpan = document.getElementById('remaining-balance');
+    
     tbody.innerHTML = "";
     let grandTotal = 0;
 
@@ -83,7 +86,22 @@ function renderTable() {
                 </tr>`;
         }
     });
+
+    // Atualiza o Total Geral
     document.getElementById('grand-total').innerText = grandTotal.toFixed(2);
+
+    // Lógica do Orçamento
+    const budget = parseFloat(budgetInput) || 0;
+    const remaining = budget - grandTotal;
+    
+    balanceSpan.innerText = remaining.toFixed(2);
+
+    // Muda a cor do saldo (Verde se tiver dinheiro, Vermelho se estourar)
+    if (remaining < 0) {
+        balanceSpan.parentElement.className = "balance-negative";
+    } else {
+        balanceSpan.parentElement.className = "balance-positive";
+    }
 }
 
 // FUNÇÃO PARA CAPTURAR E COMPARTILHAR A LISTA

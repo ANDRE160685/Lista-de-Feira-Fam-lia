@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Lista de Feira Família</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div id="login-screen">
         <div class="card">
@@ -18,7 +20,9 @@
     </div>
 
     <div id="dashboard-screen" class="hidden">
-        <nav><h1>Lista de Feira - Família</h1></nav>
+        <nav>
+            <h1>Lista de Feira - Família</h1>
+        </nav>
         <div class="container">
             <div class="grid-users" id="user-list"></div>
             <button onclick="logout()" class="btn-logout">Sair do Sistema</button>
@@ -26,7 +30,9 @@
     </div>
 
     <div id="list-screen" class="hidden">
-        <nav><h1 id="current-user-title">Lista</h1></nav>
+        <nav>
+            <h1 id="current-user-title">Lista</h1>
+        </nav>
         <div class="full-screen-card">
             <div class="input-section">
                 <div class="input-group">
@@ -43,11 +49,29 @@
                 </div>
             </div>
         </div>
+
         <div class="container">
+            <div class="budget-section">
+                <div class="input-group">
+                    <input type="number" id="budget-value" placeholder="Orçamento (R$)" step="0.01"
+                        oninput="renderTable()">
+                </div>
+                <div class="budget-summary">
+                    <span>SALDO RESTANTE: R$ <span id="remaining-balance">0.00</span></span>
+                </div>
+            </div>
+
+            
             <div class="total-section">TOTAL: R$ <span id="grand-total">0.00</span></div>
             <table id="items-table">
                 <thead>
-                    <tr><th>Item</th><th>Qtd</th><th>Unit</th><th>Total</th><th>Ações</th></tr>
+                    <tr>
+                        <th>Item</th>
+                        <th>Qtd</th>
+                        <th>Unit</th>
+                        <th>Total</th>
+                        <th>Ações</th>
+                    </tr>
                 </thead>
                 <tbody id="table-body"></tbody>
             </table>
@@ -55,4 +79,5 @@
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
